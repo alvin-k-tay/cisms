@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_515c496593007143dd6c79a9ce4b7bc5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+             <h3 align="center" style="font-size:20px"><b>Mapping Global Coverage of Psychosocial Support Across DPPA Locations</b></h3>
+             
+    
+     <div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 300px; height: 200px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white; opacity: 0.8;
+     padding: 10px;">
+     <h4>Coverage Legend</h4>
+     <i class="fa fa-map-marker fa-2x" style="color:green"></i>&nbsp;Yes = 45.0% (9 stations)<br>
+     <i class="fa fa-map-marker fa-2x" style="color:red"></i>&nbsp;No = 55.0% (11 stations)<br>
+     <small>Total number of duty stations: 20</small>
+     </div>
+     
+    
+            <div class="folium-map" id="map_515c496593007143dd6c79a9ce4b7bc5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_515c496593007143dd6c79a9ce4b7bc5 = L.map(
+                "map_515c496593007143dd6c79a9ce4b7bc5",
+                {
+                    center: [21.80959, 23.952515000000002],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+
+            
+
+        
+    
+            var tile_layer_e73f180ab58f06813b459fb4982b3609 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_e73f180ab58f06813b459fb4982b3609.addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var marker_dcfc39991ab13d6798c77507b44c1e77 = L.marker(
+                [27.1253, -13.1625],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_97a216a23af150ef11cf39bb3bd46fc2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_dcfc39991ab13d6798c77507b44c1e77.setIcon(icon_97a216a23af150ef11cf39bb3bd46fc2);
+        
+    
+        var popup_e32cbd2530d9c77aeb38653290d32a52 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_92f6c5281bd2fb0766129325e4f52cc1 = $(`<div id="html_92f6c5281bd2fb0766129325e4f52cc1" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Laayoune (D)<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_e32cbd2530d9c77aeb38653290d32a52.setContent(html_92f6c5281bd2fb0766129325e4f52cc1);
+            
+        
+
+        marker_dcfc39991ab13d6798c77507b44c1e77.bindPopup(popup_e32cbd2530d9c77aeb38653290d32a52)
+        ;
+
+        
+    
+    
+            var marker_194c7f1ee057f421fd6962bf96d2e29c = L.marker(
+                [-1.2921, 36.8219],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_59f32b193609029834d565778fb8f309 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_194c7f1ee057f421fd6962bf96d2e29c.setIcon(icon_59f32b193609029834d565778fb8f309);
+        
+    
+        var popup_fb6276e41904c694c7277ea1755e8867 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fc3b1cded2bca8189891b27cc0eae19b = $(`<div id="html_fc3b1cded2bca8189891b27cc0eae19b" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Nairobi<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_fb6276e41904c694c7277ea1755e8867.setContent(html_fc3b1cded2bca8189891b27cc0eae19b);
+            
+        
+
+        marker_194c7f1ee057f421fd6962bf96d2e29c.bindPopup(popup_fb6276e41904c694c7277ea1755e8867)
+        ;
+
+        
+    
+    
+            var marker_87c246f837b731489eb0b6d4313ee916 = L.marker(
+                [2.0469, 45.3182],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_d5fdd7c2b6e24d941ec5528595eab0f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_87c246f837b731489eb0b6d4313ee916.setIcon(icon_d5fdd7c2b6e24d941ec5528595eab0f0);
+        
+    
+        var popup_499a935a59fff6b65a0c8d884d6f4a85 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_441c3c646090afab8b02b4b68ce9bbe9 = $(`<div id="html_441c3c646090afab8b02b4b68ce9bbe9" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Mogadishu (E)<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_499a935a59fff6b65a0c8d884d6f4a85.setContent(html_441c3c646090afab8b02b4b68ce9bbe9);
+            
+        
+
+        marker_87c246f837b731489eb0b6d4313ee916.bindPopup(popup_499a935a59fff6b65a0c8d884d6f4a85)
+        ;
+
+        
+    
+    
+            var marker_a511ae16541efe00ab807f75fd239e85 = L.marker(
+                [-0.8037, 11.6094],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_dea111fa9f9c12dc3279783d2deeac11 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a511ae16541efe00ab807f75fd239e85.setIcon(icon_dea111fa9f9c12dc3279783d2deeac11);
+        
+    
+        var popup_edc4e04a4eda10aeb7bbf20bc7ca1a19 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_11c42ddc3f41cee974641d9c9558ad66 = $(`<div id="html_11c42ddc3f41cee974641d9c9558ad66" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Gabon<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_edc4e04a4eda10aeb7bbf20bc7ca1a19.setContent(html_11c42ddc3f41cee974641d9c9558ad66);
+            
+        
+
+        marker_a511ae16541efe00ab807f75fd239e85.bindPopup(popup_edc4e04a4eda10aeb7bbf20bc7ca1a19)
+        ;
+
+        
+    
+    
+            var marker_b0f7708ce96f53d4b5d44950a85c94e2 = L.marker(
+                [14.7167, -17.4677],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_28dcedc7b96c763d6b5df46af48d5ee6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b0f7708ce96f53d4b5d44950a85c94e2.setIcon(icon_28dcedc7b96c763d6b5df46af48d5ee6);
+        
+    
+        var popup_668c6cbb9a6c2f77c7a69c2f60ede558 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8237e4ec82cc7d61a528c8f1b44be36f = $(`<div id="html_8237e4ec82cc7d61a528c8f1b44be36f" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Dakar<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_668c6cbb9a6c2f77c7a69c2f60ede558.setContent(html_8237e4ec82cc7d61a528c8f1b44be36f);
+            
+        
+
+        marker_b0f7708ce96f53d4b5d44950a85c94e2.bindPopup(popup_668c6cbb9a6c2f77c7a69c2f60ede558)
+        ;
+
+        
+    
+    
+            var marker_199ad967527bec797c8cdef61ec7ecfb = L.marker(
+                [9.0305, 38.7405],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_17284c55e676c2737a866eb774d8a377 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_199ad967527bec797c8cdef61ec7ecfb.setIcon(icon_17284c55e676c2737a866eb774d8a377);
+        
+    
+        var popup_c1ede231cd012f8ff1696cf836e4350c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_265f81371eb61097327267ed13c7758e = $(`<div id="html_265f81371eb61097327267ed13c7758e" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Addis Ababa<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_c1ede231cd012f8ff1696cf836e4350c.setContent(html_265f81371eb61097327267ed13c7758e);
+            
+        
+
+        marker_199ad967527bec797c8cdef61ec7ecfb.bindPopup(popup_c1ede231cd012f8ff1696cf836e4350c)
+        ;
+
+        
+    
+    
+            var marker_7b3e898a9767f10fa841cc87da825625 = L.marker(
+                [32.8872, 13.1913],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_69e204ee005c0185eacbb962bc6e7301 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7b3e898a9767f10fa841cc87da825625.setIcon(icon_69e204ee005c0185eacbb962bc6e7301);
+        
+    
+        var popup_0f16fdcc303192c55dac604d605817f2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_56617da80f55849ee88947cb982648b1 = $(`<div id="html_56617da80f55849ee88947cb982648b1" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Tripoli, Benghazi (both E)<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_0f16fdcc303192c55dac604d605817f2.setContent(html_56617da80f55849ee88947cb982648b1);
+            
+        
+
+        marker_7b3e898a9767f10fa841cc87da825625.bindPopup(popup_0f16fdcc303192c55dac604d605817f2)
+        ;
+
+        
+    
+    
+            var marker_02d2bce93cf0a608d428b51197840212 = L.marker(
+                [3.3833, -74.0833],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_f0d7bf24ba46b845c142cc907d074d44 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_02d2bce93cf0a608d428b51197840212.setIcon(icon_f0d7bf24ba46b845c142cc907d074d44);
+        
+    
+        var popup_3021e017342da0d892168e55877de615 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98d43b175354ce5f19c91bf53d1af575 = $(`<div id="html_98d43b175354ce5f19c91bf53d1af575" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Mesetas (D), other locations not specified<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_3021e017342da0d892168e55877de615.setContent(html_98d43b175354ce5f19c91bf53d1af575);
+            
+        
+
+        marker_02d2bce93cf0a608d428b51197840212.bindPopup(popup_3021e017342da0d892168e55877de615)
+        ;
+
+        
+    
+    
+            var marker_6c16638a8896bcaa8d32934abcdbc8a0 = L.marker(
+                [18.5944, -72.3074],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_82c5370732d74f99cb0579e6ef3df5be = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_6c16638a8896bcaa8d32934abcdbc8a0.setIcon(icon_82c5370732d74f99cb0579e6ef3df5be);
+        
+    
+        var popup_dbdfd1f86b915b0f8c75fe27ffe14897 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b2fb88792944653f41fbe6f9850049e3 = $(`<div id="html_b2fb88792944653f41fbe6f9850049e3" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Port-Au-Prince (E)<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_dbdfd1f86b915b0f8c75fe27ffe14897.setContent(html_b2fb88792944653f41fbe6f9850049e3);
+            
+        
+
+        marker_6c16638a8896bcaa8d32934abcdbc8a0.bindPopup(popup_dbdfd1f86b915b0f8c75fe27ffe14897)
+        ;
+
+        
+    
+    
+            var marker_8ad807f227139e78278b980d7b9a06bd = L.marker(
+                [13.7563, 100.5018],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_cd1b113e364667b7577f5661865e3eef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8ad807f227139e78278b980d7b9a06bd.setIcon(icon_cd1b113e364667b7577f5661865e3eef);
+        
+    
+        var popup_95c0d7e7db7ed7bc2045ceab68e4c7e1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eabba7b4742bc87c5ef7db8e831a5b2b = $(`<div id="html_eabba7b4742bc87c5ef7db8e831a5b2b" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Bangkok<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_95c0d7e7db7ed7bc2045ceab68e4c7e1.setContent(html_eabba7b4742bc87c5ef7db8e831a5b2b);
+            
+        
+
+        marker_8ad807f227139e78278b980d7b9a06bd.bindPopup(popup_95c0d7e7db7ed7bc2045ceab68e4c7e1)
+        ;
+
+        
+    
+    
+            var marker_c53d158014e9a60f513b995c196d0851 = L.marker(
+                [34.5553, 69.2075],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_b0a96d0c57b742e4ddffab692e75361f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c53d158014e9a60f513b995c196d0851.setIcon(icon_b0a96d0c57b742e4ddffab692e75361f);
+        
+    
+        var popup_1bf14d42c2bd9701da32b1034665e5b6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b94f64fa6a1eae0b640728b3df89baf2 = $(`<div id="html_b94f64fa6a1eae0b640728b3df89baf2" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Kabul, Kandahar (both E)<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_1bf14d42c2bd9701da32b1034665e5b6.setContent(html_b94f64fa6a1eae0b640728b3df89baf2);
+            
+        
+
+        marker_c53d158014e9a60f513b995c196d0851.bindPopup(popup_1bf14d42c2bd9701da32b1034665e5b6)
+        ;
+
+        
+    
+    
+            var marker_27f613d8a520bdf2a31a9dd9916d021c = L.marker(
+                [35.1856, 33.3823],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_9827b5660faaf46615b02f1d4b432c5b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_27f613d8a520bdf2a31a9dd9916d021c.setIcon(icon_9827b5660faaf46615b02f1d4b432c5b);
+        
+    
+        var popup_0926d12070ca25562284ea1c0219dc3f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6adfeec8317cea95218981ad33ac3b78 = $(`<div id="html_6adfeec8317cea95218981ad33ac3b78" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Nicosia<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_0926d12070ca25562284ea1c0219dc3f.setContent(html_6adfeec8317cea95218981ad33ac3b78);
+            
+        
+
+        marker_27f613d8a520bdf2a31a9dd9916d021c.bindPopup(popup_0926d12070ca25562284ea1c0219dc3f)
+        ;
+
+        
+    
+    
+            var marker_22fa911bd672592bbb0a21a19cb82d56 = L.marker(
+                [46.2044, 6.1432],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_d338dde24e9de93b08673b4cc1c93300 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_22fa911bd672592bbb0a21a19cb82d56.setIcon(icon_d338dde24e9de93b08673b4cc1c93300);
+        
+    
+        var popup_95601dc5219524149de0e957a0277e04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dbcdb6db79112c39c23a801d270d92ae = $(`<div id="html_dbcdb6db79112c39c23a801d270d92ae" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Geneva<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_95601dc5219524149de0e957a0277e04.setContent(html_dbcdb6db79112c39c23a801d270d92ae);
+            
+        
+
+        marker_22fa911bd672592bbb0a21a19cb82d56.bindPopup(popup_95601dc5219524149de0e957a0277e04)
+        ;
+
+        
+    
+    
+            var marker_0c2f502be825ac8cffc5bb245deea16f = L.marker(
+                [37.9601, 58.3261],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_ff9eed3415cbc74a3ff9c0996507ce0d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0c2f502be825ac8cffc5bb245deea16f.setIcon(icon_ff9eed3415cbc74a3ff9c0996507ce0d);
+        
+    
+        var popup_3e488fb174ea7d462d092e14c55dd6c3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dffb02e69351893d3b0296e3fbee64e8 = $(`<div id="html_dffb02e69351893d3b0296e3fbee64e8" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Ashgabat<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_3e488fb174ea7d462d092e14c55dd6c3.setContent(html_dffb02e69351893d3b0296e3fbee64e8);
+            
+        
+
+        marker_0c2f502be825ac8cffc5bb245deea16f.bindPopup(popup_3e488fb174ea7d462d092e14c55dd6c3)
+        ;
+
+        
+    
+    
+            var marker_6e7a8285cc1feb84e24ac8f1fe4615f0 = L.marker(
+                [33.5138, 36.2765],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_36d231444a80d5f9b6e22f62ff317133 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6e7a8285cc1feb84e24ac8f1fe4615f0.setIcon(icon_36d231444a80d5f9b6e22f62ff317133);
+        
+    
+        var popup_3889c58af7aa9ab82c9a4320298819db = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cf6b115c227f22b9d8fc28f21edb66e9 = $(`<div id="html_cf6b115c227f22b9d8fc28f21edb66e9" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Damascus<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_3889c58af7aa9ab82c9a4320298819db.setContent(html_cf6b115c227f22b9d8fc28f21edb66e9);
+            
+        
+
+        marker_6e7a8285cc1feb84e24ac8f1fe4615f0.bindPopup(popup_3889c58af7aa9ab82c9a4320298819db)
+        ;
+
+        
+    
+    
+            var marker_d226dda045ff99b7cec898d9df7a10ad = L.marker(
+                [15.5527, 48.5164],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_5717b78c3d6904aa6011e6a7f6b10b2b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d226dda045ff99b7cec898d9df7a10ad.setIcon(icon_5717b78c3d6904aa6011e6a7f6b10b2b);
+        
+    
+        var popup_18fed0498cda55064f4b7f76edcdd671 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_539cccba043f5e65168bfb4d0e5aa482 = $(`<div id="html_539cccba043f5e65168bfb4d0e5aa482" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Yemen<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_18fed0498cda55064f4b7f76edcdd671.setContent(html_539cccba043f5e65168bfb4d0e5aa482);
+            
+        
+
+        marker_d226dda045ff99b7cec898d9df7a10ad.bindPopup(popup_18fed0498cda55064f4b7f76edcdd671)
+        ;
+
+        
+    
+    
+            var marker_8987c74a7c916957040863067ea72d43 = L.marker(
+                [14.7978, 42.9545],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_1ff415705563bfa4972a24e6952426db = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8987c74a7c916957040863067ea72d43.setIcon(icon_1ff415705563bfa4972a24e6952426db);
+        
+    
+        var popup_31744782d1df014e9de375ecfb9dcdce = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d55329aac5d36c9de7b0a94ae62506e4 = $(`<div id="html_d55329aac5d36c9de7b0a94ae62506e4" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Al-Hudaydah<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_31744782d1df014e9de375ecfb9dcdce.setContent(html_d55329aac5d36c9de7b0a94ae62506e4);
+            
+        
+
+        marker_8987c74a7c916957040863067ea72d43.bindPopup(popup_31744782d1df014e9de375ecfb9dcdce)
+        ;
+
+        
+    
+    
+            var marker_eced4039e68747a6166f110b8b79bae7 = L.marker(
+                [33.8938, 35.5018],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_b235322e2b403e5a325a807e813c5fff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_eced4039e68747a6166f110b8b79bae7.setIcon(icon_b235322e2b403e5a325a807e813c5fff);
+        
+    
+        var popup_61189bd0036654aba925ae3f9a6f0575 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_39ed4a42b2831b4341e5256d98ea26d2 = $(`<div id="html_39ed4a42b2831b4341e5256d98ea26d2" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Beirut<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_61189bd0036654aba925ae3f9a6f0575.setContent(html_39ed4a42b2831b4341e5256d98ea26d2);
+            
+        
+
+        marker_eced4039e68747a6166f110b8b79bae7.bindPopup(popup_61189bd0036654aba925ae3f9a6f0575)
+        ;
+
+        
+    
+    
+            var marker_a1c38ae358b41f322f20d030175a52b8 = L.marker(
+                [31.7683, 35.2137],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_2b6202c9b2ccc4b847d5cf73744d85c2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a1c38ae358b41f322f20d030175a52b8.setIcon(icon_2b6202c9b2ccc4b847d5cf73744d85c2);
+        
+    
+        var popup_048841a01b8bb00db549a7fd838de88b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8d78a8e94841422f166452711e18612c = $(`<div id="html_8d78a8e94841422f166452711e18612c" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Jerusalem<br>             <b>Counsellor Presence:</b> <span style="color:red;">No</span>         </div>`)[0];
+                popup_048841a01b8bb00db549a7fd838de88b.setContent(html_8d78a8e94841422f166452711e18612c);
+            
+        
+
+        marker_a1c38ae358b41f322f20d030175a52b8.bindPopup(popup_048841a01b8bb00db549a7fd838de88b)
+        ;
+
+        
+    
+    
+            var marker_134a050f9929bad79bd8504dc7391528 = L.marker(
+                [33.3152, 44.3661],
+                {}
+            ).addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+    
+            var icon_a17d38de6507d88be651a89079074adf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_134a050f9929bad79bd8504dc7391528.setIcon(icon_a17d38de6507d88be651a89079074adf);
+        
+    
+        var popup_6fb3fe38682d5ddc292db0d5aef5beca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_352de0bce5c92043485ba817f1283e52 = $(`<div id="html_352de0bce5c92043485ba817f1283e52" style="width: 100.0%; height: 100.0%;">             <b>Duty Station:</b> Baghdad (E)<br>             <b>Counsellor Presence:</b> <span style="color:green;">Yes</span>         </div>`)[0];
+                popup_6fb3fe38682d5ddc292db0d5aef5beca.setContent(html_352de0bce5c92043485ba817f1283e52);
+            
+        
+
+        marker_134a050f9929bad79bd8504dc7391528.bindPopup(popup_6fb3fe38682d5ddc292db0d5aef5beca)
+        ;
+
+        
+    
+    
+            var heat_map_9e76ae216512e8a9d4d38823cafe7674 = L.heatLayer(
+                [[27.1253, -13.1625, 0], [-1.2921, 36.8219, 0], [2.0469, 45.3182, 1], [-0.8037, 11.6094, 0], [14.7167, -17.4677, 0], [9.0305, 38.7405, 1], [32.8872, 13.1913, 0], [3.3833, -74.0833, 1], [18.5944, -72.3074, 1], [13.7563, 100.5018, 0], [34.5553, 69.2075, 1], [35.1856, 33.3823, 0], [46.2044, 6.1432, 0], [37.9601, 58.3261, 0], [33.5138, 36.2765, 0], [15.5527, 48.5164, 1], [14.7978, 42.9545, 1], [33.8938, 35.5018, 1], [31.7683, 35.2137, 0], [33.3152, 44.3661, 1]],
+                {"blur": 15, "maxZoom": 1, "minOpacity": 0.5, "radius": 10}
+            );
+        
+    
+            heat_map_9e76ae216512e8a9d4d38823cafe7674.addTo(map_515c496593007143dd6c79a9ce4b7bc5);
+        
+</script>
+</html>
